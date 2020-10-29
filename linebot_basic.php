@@ -1,6 +1,6 @@
 <?php
 
-$channelAccessToken = 'PZ6qlbYABvcIg+sly4KFcjs8rAVOW1+EEEDBgcOn86a9MwA+MNHV8//FPERaqcVuWnKEs4U+6oe0jLA++fQlGKdK9/SCRKlZ0x4otRbscQZBRbe5VDkXvu32iZAA+dpXEwrb47Ncr9kuH1vSp+t3LwdB04t89/1O/w1cDnyilFU='; // Access Token ค่าที่เราสร้างขึ้น
+$channelAccessToken = 'eExgb1P8YvOnUYleIJDyJ746Oy1uz36FZUHtyA/94ZbYBz9gEWGRr8voKr9OjR50QpAp4MzbsLdrvGl7/z7whK1XejwPGXGF90EFNzyI9hqY0KAxcgwAIkqEYxK3VPmP6UkzM+HOcvL6rrrmjO09FwdB04t89/1O/w1cDnyilFU='; // Access Token ค่าที่เราสร้างขึ้น
 
 $request = file_get_contents('php://input');   // Get request content
 
@@ -15,6 +15,8 @@ foreach ($request_json['events'] as $event)
 			$text = $event['message']['text'];
 			
 			$reply_message = 'ฉันได้รับข้อความ '. $text.' ของคุณแล้ว!';   
+			
+			$reply_message = mySQL_selectAll('http://bot.kantit.com/json_select_users.php');
 			
 		} else {
 			$reply_message = 'ฉันได้รับ '.$event['message']['type'].' ของคุณแล้ว!';
